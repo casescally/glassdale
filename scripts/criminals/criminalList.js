@@ -16,7 +16,7 @@ const CriminalList = () => {
             */
             const matchingCriminals = appStateCriminals.filter(criminal => criminal.conviction === event.detail.crime)
 
-            /*
+            /* 
                 Then invoke render() and pass the filtered collection as
                 an argument
             */

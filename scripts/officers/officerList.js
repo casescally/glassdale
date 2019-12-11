@@ -1,29 +1,44 @@
 import { useOfficers } from "./officerProvider.js"
 import Officer from "./officer.js"
 
+const eventHub = document.querySelector("#container")
 
 const contentTarget = document.querySelector(".officersContainer")
 
-const officerlist = () => {
+const officerList = () => {
+    // Load the application state to be used by this component
+    const appStateOfficers = useOfficers()
 
-const appStateOfficers = useOfficers()
+    eventHub.addEventListener("officerSelected", event => {
 
-const render = officers => {
-    contentTarget.innerHTML = `
+        const officerName = event.detail.officer;
+
+        const matchingOfficers = appStateOfficers.filter(currentOfficer => {
+            if (currentOfficer === officerName) {
+                return currentOfficer;
+            }
+        });
+        render(matchingOfficers)
+    }
+ )
+
+    const render = officers => {
+        //sort here
+        contentTarget.innerHTML = `
     <article class="officerComponent">
         <div class="officers">
             ${
-                officers.map(currentOfficerObject => {
-                    const officerHTML = Officer(currentOfficerObject)
-                    return officerHTML
-                }).join("")
+            officers.map(currentOfficerObject => {
+                const officerHTML = Officer(currentOfficerObject)
+                return officerHTML
+            }).join("")
             }
         </div>
     </article>
     `
-}
-render(appStateOfficers)
+    }
 
+    render(appStateOfficers)
 }
 
-export default officerlist
+export default officerList

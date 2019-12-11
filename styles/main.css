@@ -64,6 +64,8 @@ section.criminal {
 
 .container {
     border: 5px solid blue;
+    display: flex;
+    flex-direction: column;
 }
 
 body {
