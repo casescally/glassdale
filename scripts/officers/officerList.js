@@ -2,7 +2,7 @@ import { useOfficers } from "./officerProvider.js"
 import Officer from "./officer.js"
 
 
-const contentTarget =document.querySelector(".officersContainer")
+const contentTarget = document.querySelector(".officersContainer")
 
 const officerlist = () => {
 
